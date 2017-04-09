@@ -18,6 +18,42 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Controller
 public class DemoApplication {
 
+	@RequestMapping(value = "/suma")
+	@ResponseBody
+	int suma(@RequestParam(required = false) int numero1 ,int numero2) {
+		if (numero1 == 0) {
+			numero1 = 0;
+		}
+		return (numero1+numero2);
+	}
+	
+	@RequestMapping(value = "/resta")
+	@ResponseBody
+	int resta(@RequestParam(required = false) int numero1 ,int numero2) {
+		if (numero1 == 0) {
+			numero1 = 0;
+		}
+		return (numero1-numero2);
+	}
+	
+	@RequestMapping(value = "/mult")
+	@ResponseBody
+	int multiplicacion(@RequestParam(required = false) int numero1 ,int numero2) {
+		if (numero1 == 0) {
+			numero1 = 0;
+		}
+		return (numero1*numero2);
+	}
+	
+	@RequestMapping(value = "/div")
+	@ResponseBody
+	int division(@RequestParam(required = false) int numero1 ,int numero2) {
+		if (numero1 == 0) {
+			numero1 = 0;
+		}
+		return (numero1/numero2);
+	}
+	
 	@RequestMapping(value = "/hello")
 	@ResponseBody
 	String hello(@RequestParam(required = false) String nombre) {
@@ -25,28 +61,6 @@ public class DemoApplication {
 			nombre = "Mundo";
 		}
 		return "Hola " + nombre;
-	}
-	
-	
-	@RequestMapping(value = "/suma/n1={valorn1}&n2={valorn2}")
-	@ResponseBody
-	String suma(@RequestParam("valorn1") int n1, @RequestParam("valorn2") int n2) {
-		
-		return "Suma: " + (n1+n2);
-	}
-	
-	@RequestMapping(value = "/mult/n1={valorn1}*n2={valorn2}")
-	@ResponseBody
-	String mult(@RequestParam("valorn1") int n1, @RequestParam("valorn2") int n2) {
-		
-		return "Multiplicacion: " + (n1*n2);
-	}
-	
-	@RequestMapping(value = "/resta/n1={valorn1}-n2={valorn2}")
-	@ResponseBody
-	String resta(@RequestParam("valorn1") int n1, @RequestParam("valorn2") int n2) {
-		
-		return "Resta: " + (n1-n2);
 	}
 	
 	@RequestMapping(value = "/process")
